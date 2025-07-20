@@ -1,6 +1,6 @@
 [package]
 name = "valida"
-version = "1.0.0"
+version = "1.0.1"
 edition = "2024"
 license = "MIT"
 authors = ["Bordunos Pavel <bordunos.p@gmail.com>"]
