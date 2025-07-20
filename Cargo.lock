@@ -1124,9 +1124,9 @@ dependencies = [
 
 [[package]]
 name = "valida_derive"
-version = "1.0.0"
+version = "2.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "54d9ac6aed4b8992e0c0efe848444622802def8cc2615e61fff507a04849fdbf"
+checksum = "2f44cd95eaac2f3df3d91fef6d6c1e9058fbe3f7bed53418e48811378060e781"
 dependencies = [
  "async-trait",
  "proc-macro2",
