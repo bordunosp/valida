@@ -1,0 +1,48 @@
+[package]
+name = "valida"
+version = "1.0.0"
+edition = "2024"
+license = "MIT"
+authors = ["Bordunos Pavel <bordunos.p@gmail.com>"]
+repository = "https://github.com/bordunosp/valida"
+description = "Modular validation system for Rust with support for nested structures and localization."
+keywords = ["validation", "validator", "nested", "async", "i18n"]
+categories = [
+    "accessibility",
+    "concurrency",
+    "data-structures",
+    "web-programming",
+    "internationalization",
+]
+
+[dependencies]
+serde_json = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+regex = "1.11"
+idna = "1.0"
+once_cell = "1.21"
+async-trait = "0.1"
+futures = "0.3"
+tokio = { version =  "1.46" , features = ["rt", "macros"]}
+url = "2.5"
+encoding_rs = "0.8"
+sha1 = "0.11.0-rc.0"
+uuid = { version = "1.17", features = ["v1", "v3", "v4", "v5", "v6", "v7", "v8"] }
+num-traits = "0.2"
+serde_yaml = "0.9"
+
+
+
+rust-i18n = { version = "3.1", optional = true }
+valida_derive = { version = "2.0.0", optional = true }
+
+
+[features]
+default = [
+    "derive",
+    "i18n-localization"
+]
+
+i18n-localization = ["dep:rust-i18n"]
+derive = ["dep:valida_derive"]
+

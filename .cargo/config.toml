@@ -1,0 +1,3 @@
+[alias]
+test-default = """test --no-default-features"""
+test-i18n = """test --no-default-features --features i18n-localization"""
