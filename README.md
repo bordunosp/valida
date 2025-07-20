@@ -170,6 +170,8 @@ async fn main() {
 
 [Getting Started](https://github.com/bordunosp/valida/blob/main/doc/get_started.md)
 
+[Rules](https://github.com/bordunosp/valida/blob/main/doc/rules.md)
+
 [Custom Rules & Traits](https://github.com/bordunosp/valida/blob/main/doc/custom.md)
 
 [Localization Setup](https://github.com/bordunosp/valida/blob/main/doc/localization.md)

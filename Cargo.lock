@@ -1102,7 +1102,7 @@ dependencies = [
 
 [[package]]
 name = "valida"
-version = "1.0.1"
+version = "1.0.2"
 dependencies = [
  "async-trait",
  "encoding_rs",
