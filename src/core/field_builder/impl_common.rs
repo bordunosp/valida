@@ -1,16 +1,18 @@
 use crate::core::field_builder::main::FieldBuilder;
 use crate::core::rules::common::not_empty::{NotEmpty, RuleTarget};
 use crate::core::rules::common::not_none::NotNone;
-use crate::core::rules::value_ref::ValueRef;
 use std::error::Error;
 use std::marker::PhantomData;
 use std::rc::Rc;
 use std::sync::Arc;
 
-impl<'a, T, V, U, E> FieldBuilder<'a, T, V, E>
+pub trait SupportsNotEmpty: RuleTarget {}
+
+impl<T> SupportsNotEmpty for T where T: RuleTarget {}
+
+impl<'a, T, V, E> FieldBuilder<'a, T, V, E>
 where
-    V: ValueRef<Target = U> + RuleTarget,
-    U: Send + Sync + std::fmt::Debug + 'static,
+    V: SupportsNotEmpty + Send + Sync + 'static,
     E: Error + Send + Sync + 'static,
 {
     pub fn not_empty(mut self) -> Self {
@@ -19,26 +21,13 @@ where
     }
 }
 
-impl<'a, T, E> FieldBuilder<'a, Option<T>, Option<T>, E>
+impl<'a, T, U, E> FieldBuilder<'a, T, Option<U>, E>
 where
-    T: Send + Sync + 'static,
+    U: Send + Sync + 'static,
     E: Error + Send + Sync + 'static,
 {
     pub fn not_none(mut self) -> Self {
-        self.rules.rules.push(Box::new(NotNone::<T> {
-            _phantom: PhantomData,
-        }));
-        self
-    }
-}
-
-impl<'a, T, E> FieldBuilder<'a, T, Box<Option<T>>, E>
-where
-    T: Send + Sync + 'static,
-    E: Error + Send + Sync + 'static,
-{
-    pub fn not_none(mut self) -> Self {
-        self.rules.rules.push(Box::new(NotNone::<T> {
+        self.rules.rules.push(Box::new(NotNone::<U> {
             _phantom: PhantomData,
         }));
         self
